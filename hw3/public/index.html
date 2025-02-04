@@ -1,0 +1,159 @@
+<!-- James Nguyen -->
+ 
+<html>
+<head>
+	<link rel="stylesheet" href="stylesheets/style.css">
+
+
+	<script 
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> 
+	</script>
+</head>
+
+<script>
+	$(document).ready(function() {
+		// Order Form Handling
+		$("button").click(function(event) {
+			event.preventDefault(); // Prevent default form submission
+	
+			let notes = $("#Notes").val().toLowerCase();
+	
+			if (notes.includes("vegan")) {
+				alert("Warning: Cheesecakes contain dairy!");
+			} else {
+				let quantity = $("#quantity").val();
+				let topping = $("input[name='topping']:checked").val() || "None";
+	
+				// Replace the entire form section with confirmation message
+				$("#order-form").html(`
+					<h2>Thank you! Your order has been placed</h2>
+					<p><strong>Topping:</strong> ${topping}</p>
+					<p><strong>Quantity:</strong> ${quantity}</p>
+					<p><strong>Notes:</strong> ${notes}</p>
+				`);
+			}
+		});
+	
+		// Dynamic Month Dropdown
+		let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	
+		$("h2:contains('Total Orders Last Month')").html(`
+			Orders for <span id="month-dropdown">Jan</span>
+		`).css("cursor", "pointer");
+	
+		$("#month-dropdown").css({
+			"text-decoration": "underline",
+			"color": "blue"
+		});
+		
+		// Create dropdown menu
+		let dropdownMenu = $("<div id='month-menu' class='dropdown-content'></div>").css({
+			"display": "none",
+			"position": "absolute",
+			"background": "white",
+			"border": "1px solid black",
+			"max-height": "150px",
+			"overflow-y": "auto",
+			"padding": "5px",
+			"z-index": "1000",
+			"width": "80px"
+		});
+
+		// Create month items
+		months.forEach(month => {
+			let monthItem = $("<div class='month-item'>" + month + "</div>").css({
+				"padding": "5px",
+				"cursor": "pointer"
+			}).hover(
+				function() { $(this).css("background", "lightgray"); },
+				function() { $(this).css("background", "white"); }
+			).click(function() {
+				$("#month-dropdown").text(month);
+				dropdownMenu.hide();
+			});
+	
+			dropdownMenu.append(monthItem);
+		});
+	
+		$("body").append(dropdownMenu);
+		
+		// Show/hide dropdown
+		let hideTimeout;
+	
+		$("#month-dropdown").mouseenter(function() {
+			clearTimeout(hideTimeout);
+			let pos = $(this).offset();
+			dropdownMenu.css({ top: pos.top + 20, left: pos.left }).show();
+		});
+	
+		dropdownMenu.mouseenter(function() {
+			clearTimeout(hideTimeout);
+		});
+	
+		$("#month-dropdown, #month-menu").mouseleave(function() {
+			hideTimeout = setTimeout(() => dropdownMenu.hide(), 300);
+		});
+	});
+	</script>
+	
+	<!-- HTML -->
+	<body>
+	<h1> Cheesecake Order Form </h1>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" 
+	width=300 height=300></a>
+
+	<img src="https://www.kingarthurbaking.com/sites/default/files/styles/featured_image/public/recipe_legacy/5463-3-large.jpg?itok=l5_GcsqP" 
+	width=300 height=300></a>
+
+	<img src="https://scientificallysweet.com/wp-content/uploads/2022/05/IMG_7944-feature-1-500x375.jpg" 
+	width=300 height=300></a>
+		
+	<!-- Order Form -->
+	<div id="order-form">
+	<p><label for="quantity"><strong>Quantity:</strong></label></p> 
+	<select id = "quantity" name = "quantity">
+		<option value = "1"> 1 </option>
+		<option value = "2"> 2 </option>
+		<option value = "3"> 3 </option>
+		<option value = "4"> 4 </option>
+		<option value = "5"> 5 </option>
+		<option value = "6"> 6 </option>
+		<option value = "7"> 7 </option>
+		<option value = "8"> 8 </option>
+		<option value = "9"> 9 </option>
+		<option value = "10"> 10 </option>
+	</select>
+
+	<!-- Toppings -->
+	<h3><strong>Toppings</strong></h3> 
+	<fieldset>
+		<legend>Select a topping:</legend>
+		<input type="radio" id="Cherry" name="topping" value="cherry">
+		<label for="cherry">Cherry</label><br>
+		<input type="radio" id="chocolate" name="topping" value="chocolate">
+		<label for="chocolate">Chocolate</label><br>
+		<input type="radio" id="plain" name="topping" value="plain">
+		<label for="plain">Plain</label>
+	</fieldset>
+
+	<!-- Notes -->
+	<br>
+	<label for = "Notes"> Notes: </label> <br>
+	<textarea id="Notes" name="Notes" rows="4" cols="50" placeholder="Enter any special instructions here..."></textarea>
+	<br><br>	
+
+	<button type="Order"> Order </button>
+	
+
+<h2> Total Orders Last Month </h2>
+<ul>
+	<li> 11 Cherry </li>
+	<li> 17 Chocolate </li>
+	<li> 31 Plain </li>
+	</ul>
+
+</body>
+</html>
+
+
+
