@@ -1,4 +1,4 @@
-
+// Name: James Nguyen
 	$(document).ready(function() {
 		// Order Form Handling
 		$("button").click(function(event) {
