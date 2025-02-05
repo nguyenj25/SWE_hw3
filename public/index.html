@@ -1,0 +1,72 @@
+<!-- James Nguyen -->
+ 
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="javascripts/script.js"></script>
+
+</head>
+
+	
+	<!-- HTML -->
+	<body>
+	<h1> Cheesecake Order Form </h1>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" 
+	width=300 height=300></a>
+
+	<img src="https://www.kingarthurbaking.com/sites/default/files/styles/featured_image/public/recipe_legacy/5463-3-large.jpg?itok=l5_GcsqP" 
+	width=300 height=300></a>
+
+	<img src="https://scientificallysweet.com/wp-content/uploads/2022/05/IMG_7944-feature-1-500x375.jpg" 
+	width=300 height=300></a>
+		
+	<!-- Order Form -->
+	<div id="order-form">
+	<p><label for="quantity"><strong>Quantity:</strong></label></p> 
+	<select id = "quantity" name = "quantity">
+		<option value = "1"> 1 </option>
+		<option value = "2"> 2 </option>
+		<option value = "3"> 3 </option>
+		<option value = "4"> 4 </option>
+		<option value = "5"> 5 </option>
+		<option value = "6"> 6 </option>
+		<option value = "7"> 7 </option>
+		<option value = "8"> 8 </option>
+		<option value = "9"> 9 </option>
+		<option value = "10"> 10 </option>
+	</select>
+
+	<!-- Toppings -->
+	<h3><strong>Toppings</strong></h3> 
+	<fieldset>
+		<legend>Select a topping:</legend>
+		<input type="radio" id="Cherry" name="topping" value="cherry">
+		<label for="cherry">Cherry</label><br>
+		<input type="radio" id="chocolate" name="topping" value="chocolate">
+		<label for="chocolate">Chocolate</label><br>
+		<input type="radio" id="plain" name="topping" value="plain">
+		<label for="plain">Plain</label>
+	</fieldset>
+
+	<!-- Notes -->
+	<br>
+	<label for = "Notes"> Notes: </label> <br>
+	<textarea id="Notes" name="Notes" rows="4" cols="50" placeholder="Enter any special instructions here..."></textarea>
+	<br><br>	
+
+	<button type="Order"> Order </button>
+	
+
+<h2> Total Orders Last Month </h2>
+<ul>
+	<li> 11 Cherry </li>
+	<li> 17 Chocolate </li>
+	<li> 31 Plain </li>
+	</ul>
+
+</body>
+</html>
+
+
+
