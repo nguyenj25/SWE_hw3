@@ -24,4 +24,3 @@ test('test selectEvent', () => {
     // Verify the <h1> text inside the mock DOM
     expect($('h1').text().trim()).toBe("Cheesecake Order Form");
 });
-
